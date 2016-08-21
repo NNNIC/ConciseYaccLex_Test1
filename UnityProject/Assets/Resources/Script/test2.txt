@@ -1,0 +1,13 @@
+//
+// TEST 02
+//
+Screen "TestScene" 
+
+//レイヤなし
+Layer  "" MC
+
+Display "NicoEffect" (-50,70)
+
+Display "NicoEffect" (  0,100)
+
+Display "NicoEffect" ( 50,70)
