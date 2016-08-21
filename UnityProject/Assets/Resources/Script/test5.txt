@@ -6,9 +6,16 @@ Screen "TestScene"  { Repeat(1) }
 //レイヤなし
 Layer  "Canvas" MC
 
-Display "StarBlueEffect" ("Button_A",0,0)
-Display "StarBlueEffect" ("Button_B",0,0)
-Display "StarBlueEffect" ("Button_C",0,0)
+#if DATE("2016/12/24")
+	#set @EFT "HartEffect"
+#else
+	#set @EFT "StarBlueEffect"
+#endif
+
+
+Display @EFT ("Button_A",0,0)
+Display @EFT ("Button_B",0,0)
+Display @EFT ("Button_C",0,0)
 
 Display "NicoEffect" (-50,70)
 

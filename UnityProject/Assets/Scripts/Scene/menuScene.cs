@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class menuScene : MonoBehaviour {
 
     public static string m_script;
+    public static DateTime m_today;
 
 	// Use this for initialization
 	void Start () {
-	
+	    m_today = DateTime.Now;
 	}
 	
 	// Update is called once per frame
@@ -43,7 +45,18 @@ public class menuScene : MonoBehaviour {
             GUILayout.TextArea(m_script,GUILayout.Width(Screen.width));
             GUILayout.EndScrollView();
         }
-
+        
+        if (m_scriptname == "test5")
+        { 
+            GUILayout.Space(30);
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Today :" + m_today.ToShortDateString()  );
+            if (GUILayout.Button("NOW"))        m_today = DateTime.Now;
+            if (GUILayout.Button("2016/8/31"))  m_today = DateTime.Parse("2016/8/31");
+            if (GUILayout.Button("2016/9/1"))   m_today = DateTime.Parse("2016/9/1");
+            if (GUILayout.Button("2016/12/24")) m_today = DateTime.Parse("2016/12/24");
+            GUILayout.EndHorizontal();
+        }
     }
 
     void _disp_button_and_load(string n)

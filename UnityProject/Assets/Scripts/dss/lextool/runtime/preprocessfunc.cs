@@ -5,6 +5,8 @@ namespace lextool.runtime
 {
     public class PreProcessFunction
     {
+        public static DateTime m_today { get { return menuScene.m_today; } }
+
         public static bool Execute(VALUE v)
         {
             var func = FuncUtil.get_funcname(v);
@@ -16,7 +18,7 @@ namespace lextool.runtime
                 try
                 {
                     var date = DateTime.Parse(s);
-                    if (date.Year == DateTime.Now.Year && date.Month == DateTime.Now.Month && date.Day == DateTime.Now.Day) return true;
+                    if (date.Year == m_today.Year && date.Month == m_today.Month && date.Day == m_today.Day) return true;
                 }
                 catch {
                     sys.error("Runtime / PreProcessFunction.Execute",v);
@@ -31,7 +33,7 @@ namespace lextool.runtime
                 try
                 {
                     var date = DateTime.Parse(s);
-                    var today = new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day);
+                    var today = new DateTime(m_today.Year,m_today.Month,m_today.Day);
                     if (today>=date) return true;
                 }
                 catch
@@ -50,7 +52,7 @@ namespace lextool.runtime
                 {
                     var date1 = DateTime.Parse(s1);
                     var date2 = DateTime.Parse(s2);
-                    var today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+                    var today = new DateTime(m_today.Year, m_today.Month, m_today.Day);
                     if (today >= date1 && today <= date2) return true;
                 }
                 catch
